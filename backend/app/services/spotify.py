@@ -82,3 +82,28 @@ async def get_top_artists(
     response.raise_for_status()
 
     return response.json()
+
+async def get_top_tracks(
+    access_token: str,
+    time_range: str = "medium_term",
+    limit: int = 20,
+) -> dict:
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+    }
+
+    params = {
+        "time_range": time_range,
+        "limit": limit,
+    }
+
+    async with httpx.AsyncClient() as client:
+        response = await client.get(
+            f"{SPOTIFY_API_URL}/me/top/tracks",
+            headers=headers,
+            params=params,
+        )
+
+    response.raise_for_status()
+
+    return response.json()
