@@ -11,6 +11,14 @@ from backend.app.services.spotify import (
     get_top_tracks,
 )
 
+from backend.app.analytics.music import (
+    get_top_artist,
+    get_artist_names,
+    calculate_artist_overlap,
+    calculate_rank_movement,
+    summarize_rank_changes,
+)
+
 
 router = APIRouter(prefix="/spotify", tags=["Spotify"])
 
@@ -128,4 +136,66 @@ async def top_tracks(
         raise HTTPException(
             status_code=400,
             detail=f"Unable to retrieve top tracks: {str(e)}",
+        )
+
+@router.get("/analysis")
+async def spotify_analysis(request: Request):
+    access_token = request.session.get("access_token")
+
+    if not access_token:
+        raise HTTPException(
+            status_code=401,
+            detail="Not authenticated with Spotify",
+        )
+
+    try:
+        short_term = await get_top_artists(
+            access_token,
+            time_range="short_term",
+            limit=20,
+        )
+
+        medium_term = await get_top_artists(
+            access_token,
+            time_range="medium_term",
+            limit=20,
+        )
+
+        long_term = await get_top_artists(
+            access_token,
+            time_range="long_term",
+            limit=20,
+        )
+
+        short_artists = short_term.get("items", [])
+        medium_artists = medium_term.get("items", [])
+        long_artists = long_term.get("items", [])
+
+        return {
+            "top_artist": get_top_artist(short_artists),
+            "short_term_artists": get_artist_names(short_artists),
+            "medium_term_artists": get_artist_names(medium_artists),
+            "long_term_artists": get_artist_names(long_artists),
+            "short_vs_medium": calculate_artist_overlap(
+                short_artists,
+                medium_artists,
+            ),
+            "short_vs_long": calculate_artist_overlap(
+                short_artists,
+                long_artists,
+            ),
+            "rank_movement": calculate_rank_movement(
+                short_artists,
+                medium_artists,
+                ),
+            "rank_summary": summarize_rank_changes(
+                short_artists,
+                medium_artists,
+            ),
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unable to generate Spotify analysis: {str(e)}",
         )
