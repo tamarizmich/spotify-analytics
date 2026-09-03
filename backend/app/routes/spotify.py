@@ -45,7 +45,10 @@ async def get_me(request: Request):
 
 
 @router.get("/top-artists", response_model=TopArtistsResponse)
-async def top_artists(request: Request):
+async def top_artists(
+    request: Request,
+    time_range: str = "medium_term",
+):
     access_token = request.session.get("access_token")
 
     if not access_token:
@@ -55,7 +58,10 @@ async def top_artists(request: Request):
         )
 
     try:
-        artists = await get_top_artists(access_token)
+        artists = await get_top_artists(
+            access_token,
+            time_range=time_range,
+            )
 
         return {
             "items": [
@@ -77,7 +83,10 @@ async def top_artists(request: Request):
         )
 
 @router.get("/top-tracks", response_model=TopTracksResponse)
-async def top_tracks(request: Request):
+async def top_tracks(
+    request: Request,
+    time_range: str = "medium_term",
+):
     access_token = request.session.get("access_token")
 
     if not access_token:
@@ -87,7 +96,10 @@ async def top_tracks(request: Request):
         )
 
     try:
-        tracks = await get_top_tracks(access_token)
+        tracks = await get_top_tracks(
+            access_token,
+            time_range=time_range,
+        )
 
         return {
             "items": [
