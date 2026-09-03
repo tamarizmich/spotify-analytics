@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import RedirectResponse
 
 from backend.app.config import SPOTIFY_CLIENT_ID, SPOTIFY_REDIRECT_URI
@@ -29,16 +29,17 @@ async def login():
 
 
 @router.get("/callback")
-async def callback(code: str):
+async def callback(request: Request, code: str):
     try:
         token_data = await get_access_token(code)
 
+        request.session["access_token"] = token_data["access_token"]
+
+        if "refresh_token" in token_data:
+            request.session["refresh_token"] = token_data["refresh_token"]
+
         return {
-            "message": "Spotify authentication successful!",
-            "token_type": token_data.get("token_type"),
-            "expires_in": token_data.get("expires_in"),
-            "access_token": token_data.get("access_token"),
-            "refresh_token": token_data.get("refresh_token"),
+            "message": "Spotify authentication successful!"
         }
 
     except Exception as e:
