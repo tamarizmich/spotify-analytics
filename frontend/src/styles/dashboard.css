@@ -3067,3 +3067,588 @@ button {
     width: 145px;
   }
 }
+
+/* =========================================================
+   SCHOOL DESK — NAVIGATION SUPPLIES
+   ========================================================= */
+
+.school-supplies {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.school-supply {
+  position: absolute;
+  pointer-events: auto;
+
+  border: 0;
+  background: transparent;
+  padding: 0;
+
+  cursor: pointer;
+
+  transition:
+    transform 220ms ease,
+    filter 220ms ease;
+}
+
+/* =========================================================
+   HANDWRITTEN LABELS
+   ========================================================= */
+
+.supply-note {
+  position: absolute;
+
+  opacity: 0;
+  white-space: nowrap;
+
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  color: #706a62;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.school-supply:hover .supply-note {
+  opacity: 1;
+}
+
+/* =========================================================
+   PENCIL
+   ========================================================= */
+
+.pencil-supply {
+  top: 45px;
+  right: -38px;
+
+  transform: rotate(63deg);
+}
+
+.pencil-supply:hover {
+  transform:
+    rotate(58deg)
+    translateY(-5px);
+}
+
+.pencil-body {
+  position: relative;
+
+  display: block;
+
+  width: 170px;
+  height: 17px;
+
+  border-radius: 3px;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(255,255,255,0.22) 0,
+      rgba(255,255,255,0.22) 2px,
+      transparent 2px,
+      transparent 18px
+    ),
+    #d8bd75;
+
+  border: 1px solid rgba(55, 47, 35, 0.3);
+
+  box-shadow:
+    3px 4px 0 rgba(40, 34, 25, 0.12);
+}
+
+.pencil-body::before {
+  content: "";
+
+  position: absolute;
+  right: -13px;
+  top: 0;
+
+  width: 14px;
+  height: 15px;
+
+  background: #e7d8ba;
+
+  border: 1px solid rgba(55, 47, 35, 0.22);
+
+  border-radius: 0 3px 3px 0;
+}
+
+.pencil-tip {
+  position: absolute;
+
+  left: -22px;
+  top: -1px;
+
+  width: 23px;
+  height: 18px;
+
+  background: #e4d1aa;
+
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.pencil-tip::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 6px;
+
+  width: 7px;
+  height: 7px;
+
+  background: #403a32;
+
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+}
+
+.pencil-supply .supply-note {
+  top: 32px;
+  left: 50px;
+
+  transform: rotate(-63deg);
+}
+
+.pencil-supply:hover .supply-note {
+  transform:
+    rotate(-63deg)
+    translateY(-4px);
+}
+
+/* =========================================================
+   ERASER
+   ========================================================= */
+
+.eraser-supply {
+  left: -42px;
+  bottom: 210px;
+
+  transform: rotate(-9deg);
+}
+
+.eraser-supply:hover {
+  transform:
+    rotate(-5deg)
+    translateX(-5px);
+}
+
+.eraser-body {
+  display: grid;
+  place-items: center;
+
+  width: 90px;
+  height: 48px;
+
+  border-radius: 7px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #e4b8aa 0 38%,
+      #d8d0bd 38% 100%
+    );
+
+  border: 1px solid rgba(55, 47, 35, 0.25);
+
+  box-shadow:
+    4px 6px 0 rgba(40, 34, 25, 0.11);
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+
+  color: rgba(45, 40, 32, 0.55);
+}
+
+.eraser-supply .supply-note {
+  left: 8px;
+  top: 58px;
+
+  transform: rotate(9deg);
+}
+
+.eraser-supply:hover .supply-note {
+  transform:
+    rotate(9deg)
+    translateY(3px);
+}
+
+/* =========================================================
+   SCHOOL DESK — NAVIGATION SUPPLIES
+   ========================================================= */
+
+.notebook-wrapper {
+  position: relative;
+}
+
+.school-supplies {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.school-supply {
+  position: absolute;
+  pointer-events: auto;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+
+  transition:
+    transform 220ms ease,
+    filter 220ms ease;
+}
+
+.school-supply:focus-visible {
+  outline: 2px dashed #777064;
+  outline-offset: 6px;
+}
+
+/* =========================================================
+   HANDWRITTEN LABELS
+   ========================================================= */
+
+.supply-note {
+  position: absolute;
+  opacity: 0;
+  white-space: nowrap;
+
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  color: #706a62;
+
+  pointer-events: none;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.school-supply:hover .supply-note {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   PENCIL — CHARTS
+   ========================================================= */
+
+.pencil-supply {
+  top: 45px;
+  right: -38px;
+
+  transform: rotate(63deg);
+}
+
+.pencil-supply:hover {
+  transform:
+    rotate(58deg)
+    translateY(-5px);
+}
+
+.pencil-body {
+  position: relative;
+
+  display: block;
+
+  width: 170px;
+  height: 17px;
+
+  border-radius: 3px;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.22) 0,
+      rgba(255, 255, 255, 0.22) 2px,
+      transparent 2px,
+      transparent 18px
+    ),
+    #d8bd75;
+
+  border: 1px solid rgba(55, 47, 35, 0.3);
+
+  box-shadow:
+    3px 4px 0 rgba(40, 34, 25, 0.12);
+}
+
+.pencil-body::before {
+  content: "";
+
+  position: absolute;
+  right: -13px;
+  top: 0;
+
+  width: 14px;
+  height: 15px;
+
+  background: #e7d8ba;
+
+  border: 1px solid rgba(55, 47, 35, 0.22);
+  border-radius: 0 3px 3px 0;
+}
+
+.pencil-tip {
+  position: absolute;
+
+  left: -22px;
+  top: -1px;
+
+  width: 23px;
+  height: 18px;
+
+  background: #e4d1aa;
+
+  clip-path: polygon(
+    100% 0,
+    100% 100%,
+    0 50%
+  );
+}
+
+.pencil-tip::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 6px;
+
+  width: 7px;
+  height: 7px;
+
+  background: #403a32;
+
+  clip-path: polygon(
+    100% 50%,
+    0 0,
+    0 100%
+  );
+}
+
+.pencil-supply .supply-note {
+  top: 32px;
+  left: 50px;
+
+  transform: rotate(-63deg);
+}
+
+.pencil-supply:hover .supply-note {
+  transform:
+    rotate(-63deg)
+    translateY(-4px);
+}
+
+
+/* =========================================================
+   ERASER — PERSONALITY
+   ========================================================= */
+
+.eraser-supply {
+  left: -42px;
+  bottom: 210px;
+
+  transform: rotate(-9deg);
+}
+
+.eraser-supply:hover {
+  transform:
+    rotate(-5deg)
+    translateX(-5px);
+}
+
+.eraser-body {
+  display: grid;
+  place-items: center;
+
+  width: 90px;
+  height: 48px;
+
+  border-radius: 7px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #e4b8aa 0 38%,
+      #d8d0bd 38% 100%
+    );
+
+  border: 1px solid rgba(55, 47, 35, 0.25);
+
+  box-shadow:
+    4px 6px 0 rgba(40, 34, 25, 0.11);
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+
+  color: rgba(45, 40, 32, 0.55);
+}
+
+.eraser-supply .supply-note {
+  left: 8px;
+  top: 58px;
+
+  transform: rotate(9deg);
+}
+
+.eraser-supply:hover .supply-note {
+  transform:
+    rotate(9deg)
+    translateY(3px);
+}
+
+
+/* =========================================================
+   RULER — INSIGHTS
+   ========================================================= */
+
+.ruler-supply {
+  right: -28px;
+  bottom: 125px;
+
+  transform: rotate(-72deg);
+}
+
+.ruler-supply:hover {
+  transform:
+    rotate(-69deg)
+    translateY(-5px);
+}
+
+.ruler-body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+
+  width: 230px;
+  height: 32px;
+
+  padding: 0 8px 4px;
+
+  background: rgba(216, 198, 143, 0.78);
+
+  border: 1px solid rgba(70, 58, 35, 0.25);
+
+  box-shadow:
+    3px 4px 0 rgba(40, 34, 25, 0.1);
+
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+
+  color: rgba(55, 47, 35, 0.55);
+}
+
+.ruler-body span {
+  position: relative;
+}
+
+.ruler-body span::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 13px;
+
+  width: 1px;
+  height: 8px;
+
+  background: rgba(55, 47, 35, 0.35);
+}
+
+.ruler-supply .supply-note {
+  right: 45px;
+  bottom: -48px;
+
+  transform: rotate(72deg);
+}
+
+.ruler-supply:hover .supply-note {
+  transform:
+    rotate(72deg)
+    translateY(-3px);
+}
+
+
+/* =========================================================
+   PAPER CLIP — NOTES
+   ========================================================= */
+
+.clip-supply {
+  right: 35px;
+  top: 190px;
+
+  transform: rotate(18deg);
+}
+
+.clip-supply:hover {
+  transform:
+    rotate(12deg)
+    translateY(-5px);
+}
+
+.paperclip {
+  display: block;
+
+  font-family: Arial, sans-serif;
+  font-size: 92px;
+  line-height: 0.55;
+
+  color: #77746d;
+
+  text-shadow:
+    2px 3px 0 rgba(40, 34, 25, 0.1);
+}
+
+.clip-supply .supply-note {
+  right: 20px;
+  top: 75px;
+
+  transform: rotate(-18deg);
+}
+
+.clip-supply:hover .supply-note {
+  transform:
+    rotate(-18deg)
+    translateY(-4px);
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .pencil-supply {
+    right: -20px;
+  }
+
+  .ruler-supply {
+    right: -15px;
+  }
+
+  .eraser-supply {
+    left: -20px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .school-supplies {
+    display: none;
+  }
+}

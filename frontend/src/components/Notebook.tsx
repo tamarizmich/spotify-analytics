@@ -15,9 +15,10 @@ interface NotebookPage {
 
 interface NotebookProps {
   pages: NotebookPage[];
+  onDeskNavigate?: (section: string) => void;
 }
 
-function Notebook({ pages }: NotebookProps) {
+function Notebook({ pages, onDeskNavigate }: NotebookProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [displayPage, setDisplayPage] = useState(0);
   const [isTurning, setIsTurning] = useState(false);
@@ -26,7 +27,10 @@ function Notebook({ pages }: NotebookProps) {
   const paperRef = useRef<HTMLDivElement>(null);
   const pageContentRef = useRef<HTMLDivElement>(null);
 
-  // Ajusta la altura del papel al contenido real de la página
+  // =========================================================
+  // DYNAMIC PAPER HEIGHT
+  // =========================================================
+
   const updatePaperHeight = () => {
     if (!paperRef.current || !pageContentRef.current) return;
 
@@ -47,7 +51,6 @@ function Notebook({ pages }: NotebookProps) {
     return () => cancelAnimationFrame(frame);
   }, [displayPage]);
 
-  // Detecta cambios de tamaño dentro de la página
   useEffect(() => {
     if (!pageContentRef.current) return;
 
@@ -59,6 +62,10 @@ function Notebook({ pages }: NotebookProps) {
 
     return () => observer.disconnect();
   }, [displayPage]);
+
+  // =========================================================
+  // PAGE NAVIGATION
+  // =========================================================
 
   const goToPage = (index: number) => {
     if (
@@ -92,6 +99,10 @@ function Notebook({ pages }: NotebookProps) {
     }
   };
 
+  // =========================================================
+  // KEYBOARD NAVIGATION
+  // =========================================================
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
@@ -110,14 +121,106 @@ function Notebook({ pages }: NotebookProps) {
     };
   }, [currentPage, isTurning]);
 
+  // =========================================================
+  // DESK NAVIGATION
+  // =========================================================
+
+  const handleDeskNavigation = (section: string) => {
+    if (onDeskNavigate) {
+      onDeskNavigate(section);
+    }
+  };
+
   const current = pages[currentPage];
   const visible = pages[displayPage];
 
   return (
     <div className="notebook-wrapper">
+
+      {/* =====================================================
+          SCHOOL DESK — NAVIGATION
+          ===================================================== */}
+
+      <div
+        className="school-supplies"
+        aria-label="School supplies navigation"
+      >
+
+        {/* PENCIL — CHARTS */}
+        <button
+          className="school-supply pencil-supply"
+          onClick={() => handleDeskNavigation("charts")}
+          aria-label="Charts"
+        >
+          <span className="pencil-body">
+            <span className="pencil-tip" />
+          </span>
+
+          <span className="supply-note">
+            see the numbers →
+          </span>
+        </button>
+
+        {/* ERASER — PERSONALITY */}
+        <button
+          className="school-supply eraser-supply"
+          onClick={() => handleDeskNavigation("personality")}
+          aria-label="Your personality"
+        >
+          <span className="eraser-body">
+            ERASE
+          </span>
+
+          <span className="supply-note">
+            what kind of listener are you?
+          </span>
+        </button>
+
+        {/* RULER — INSIGHTS */}
+        <button
+          className="school-supply ruler-supply"
+          onClick={() => handleDeskNavigation("insights")}
+          aria-label="Insights"
+        >
+          <span className="ruler-body">
+            <span>0</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+          </span>
+
+          <span className="supply-note">
+            measure your taste →
+          </span>
+        </button>
+
+        {/* PAPER CLIP — NOTES */}
+        <button
+          className="school-supply clip-supply"
+          onClick={() => handleDeskNavigation("notes")}
+          aria-label="Notes"
+        >
+          <span className="paperclip">
+            ⌇
+          </span>
+
+          <span className="supply-note">
+            little notes
+          </span>
+        </button>
+
+      </div>
+
+      {/* =====================================================
+          NOTEBOOK
+          ===================================================== */}
+
       <div className="notebook">
 
         {/* TABS */}
+
         <nav className="notebook-tabs">
           {pages.map((item, index) => (
             <button
@@ -139,14 +242,18 @@ function Notebook({ pages }: NotebookProps) {
         </nav>
 
         {/* PAPER */}
+
         <div
           className="notebook-paper"
           ref={paperRef}
         >
+
           {/* BINDING */}
+
           <div className="paper-binding" />
 
           {/* HOLES */}
+
           <div className="paper-holes">
             <span />
             <span />
@@ -156,7 +263,10 @@ function Notebook({ pages }: NotebookProps) {
             <span />
           </div>
 
-          {/* PAGE UNDERNEATH */}
+          {/* =================================================
+              PAGE UNDERNEATH
+              ================================================= */}
+
           {isTurning && (
             <div className="notebook-page page-under">
               <div className="page-content">
@@ -165,7 +275,10 @@ function Notebook({ pages }: NotebookProps) {
             </div>
           )}
 
-          {/* CURRENT PAGE */}
+          {/* =================================================
+              CURRENT PAGE
+              ================================================= */}
+
           <div
             className={`notebook-page page-front ${
               isTurning ? `turning-${direction}` : ""
@@ -175,11 +288,12 @@ function Notebook({ pages }: NotebookProps) {
               className={`page-content page-${displayPage + 1}`}
               ref={pageContentRef}
             >
+
               {visible.content}
 
-              {/* =========================================
+              {/* =================================================
                   PAGE 01 — YEARBOOK STICKER
-                  ========================================= */}
+                  ================================================= */}
 
               {displayPage === 0 && (
                 <div className="page-sticker yearbook-star">
@@ -188,48 +302,68 @@ function Notebook({ pages }: NotebookProps) {
                 </div>
               )}
 
-              {/* =========================================
-                  PAGE 02 — RECEIPT
-                  ========================================= */}
+              {/* =================================================
+                  PAGE 02 — SCHOOL STORE RECEIPT
+                  ================================================= */}
 
               {displayPage === 1 && (
                 <div className="page-sticker receipt-sticker">
+
                   <div className="masking-tape" />
 
                   <div className="receipt-paper">
                     <small>YEARBOOK CAFÉ</small>
 
-                    <strong>THANK YOU!</strong>
+                    <strong>
+                      THANK YOU!
+                    </strong>
 
-                    <span>1 × good memories</span>
-                    <span>1 × questionable decisions</span>
-                    <span>1 × main character moment</span>
+                    <span>
+                      1 × good memories
+                    </span>
+
+                    <span>
+                      1 × questionable decisions
+                    </span>
+
+                    <span>
+                      1 × main character moment
+                    </span>
 
                     <hr />
 
-                    <b>TOTAL: 2026</b>
+                    <b>
+                      TOTAL: 2026
+                    </b>
                   </div>
+
                 </div>
               )}
 
-              {/* =========================================
-                  PAGE 03 — GUIDANCE OFFICE STAMP
-                  ========================================= */}
+              {/* =================================================
+                  PAGE 03 — GUIDANCE OFFICE
+                  ================================================= */}
 
               {displayPage === 2 && (
                 <div className="page-stamp guidance-stamp">
                   GUIDANCE
-                  <span>OFFICE</span>
+
+                  <span>
+                    OFFICE
+                  </span>
                 </div>
               )}
 
-              {/* =========================================
+              {/* =================================================
                   PAGE 04 — AWARD
-                  ========================================= */}
+                  ================================================= */}
 
               {displayPage === 3 && (
                 <div className="page-sticker award-sticker">
-                  <span>★</span>
+
+                  <span>
+                    ★
+                  </span>
 
                   <strong>
                     CLASS
@@ -237,26 +371,38 @@ function Notebook({ pages }: NotebookProps) {
                     FAVORITE
                   </strong>
 
-                  <small>2026</small>
+                  <small>
+                    2026
+                  </small>
+
                 </div>
               )}
 
-              {/* =========================================
+              {/* =================================================
                   PAGE 05 — CONTACT SHEET
-                  ========================================= */}
+                  ================================================= */}
 
-              {displayPage === 4}
+              {displayPage === 4 && null}
+
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* NAVIGATION */}
+      {/* =====================================================
+          PAGE NAVIGATION
+          ===================================================== */}
+
       <div className="notebook-navigation">
+
         <button
           className="page-nav-button"
           onClick={previousPage}
-          disabled={currentPage === 0 || isTurning}
+          disabled={
+            currentPage === 0 ||
+            isTurning
+          }
         >
           ← PREVIOUS
         </button>
@@ -283,7 +429,9 @@ function Notebook({ pages }: NotebookProps) {
         >
           NEXT →
         </button>
+
       </div>
+
     </div>
   );
 }
