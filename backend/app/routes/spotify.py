@@ -14,6 +14,7 @@ from backend.app.services.spotify import (
 from backend.app.analytics.music import (
     get_top_artist,
     get_artist_names,
+    get_artist_roster,
     calculate_artist_overlap,
     calculate_rank_movement,
     summarize_rank_changes,
@@ -173,21 +174,30 @@ async def spotify_analysis(request: Request):
 
         return {
             "top_artist": get_top_artist(short_artists),
+
             "short_term_artists": get_artist_names(short_artists),
             "medium_term_artists": get_artist_names(medium_artists),
             "long_term_artists": get_artist_names(long_artists),
+
+            "short_term_roster": get_artist_roster(short_artists),
+            "medium_term_roster": get_artist_roster(medium_artists),
+            "long_term_roster": get_artist_roster(long_artists),
+
             "short_vs_medium": calculate_artist_overlap(
                 short_artists,
                 medium_artists,
             ),
+
             "short_vs_long": calculate_artist_overlap(
                 short_artists,
                 long_artists,
             ),
+
             "rank_movement": calculate_rank_movement(
                 short_artists,
                 medium_artists,
-                ),
+            ),
+
             "rank_summary": summarize_rank_changes(
                 short_artists,
                 medium_artists,

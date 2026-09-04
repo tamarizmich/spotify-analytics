@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Dashboard from './components/Dashboard'
 import { getSpotifyAnalysis } from './services/spotify'
 
 function App() {
@@ -17,35 +18,29 @@ function App() {
       })
   }, [])
 
-  return (
-    <div>
-      <h1>K-Pop Analytics</h1>
-      <p>Your Spotify music insights</p>
+  if (analysis) {
+    return <Dashboard analysis={analysis} />
+  }
 
-      {!analysis && (
+  return (
+    <main
+      style={{
+        minHeight: '100vh',
+        display: 'grid',
+        placeItems: 'center',
+        padding: '24px',
+      }}
+    >
+      <div>
+        <h1>K-Pop Music Yearbook</h1>
+
+        {error && <p>{error}</p>}
+
         <button onClick={loginWithSpotify}>
           Connect with Spotify
         </button>
-      )}
-
-      {error && <p>Error: {error}</p>}
-
-      {analysis && (
-        <div>
-          <h2>{analysis.top_artist.name}</h2>
-
-          <p>
-            Short vs Medium:{' '}
-            {analysis.short_vs_medium.overlap_percentage}%
-          </p>
-
-          <p>
-            Short vs Long:{' '}
-            {analysis.short_vs_long.overlap_percentage}%
-          </p>
-        </div>
-      )}
-    </div>
+      </div>
+    </main>
   )
 }
 

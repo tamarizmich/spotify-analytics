@@ -23,6 +23,22 @@ def get_artist_names(artists: List[Dict[str, Any]]) -> List[str]:
     """
     return [artist["name"] for artist in artists]
 
+def get_artist_roster(
+    artists: List[Dict[str, Any]]
+) -> List[Dict[str, Any]]:
+    """
+    Returns the information needed for the class roster.
+    """
+
+    return [
+        {
+            "id": artist["id"],
+            "name": artist["name"],
+            "uri": artist["uri"],
+            "images": artist.get("images", []),
+        }
+        for artist in artists
+    ]
 
 def calculate_artist_overlap(
     first_period: List[Dict[str, Any]],
@@ -82,6 +98,11 @@ def calculate_rank_movement(
             {
                 "id": artist_id,
                 "name": artist["name"],
+                "image": (
+                    artist["images"][0]["url"]
+                    if artist.get("images")
+                    else None
+                ),
                 "first_rank": first_rank,
                 "second_rank": second_rank,
                 "change": first_rank - second_rank,
