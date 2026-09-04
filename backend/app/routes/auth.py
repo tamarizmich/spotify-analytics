@@ -1,7 +1,11 @@
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import RedirectResponse
 
-from backend.app.config import SPOTIFY_CLIENT_ID, SPOTIFY_REDIRECT_URI
+from backend.app.config import (
+    SPOTIFY_CLIENT_ID,
+    SPOTIFY_REDIRECT_URI,
+    FRONTEND_URL,
+)
 from backend.app.services.spotify import get_access_token
 
 
@@ -38,9 +42,7 @@ async def callback(request: Request, code: str):
         if "refresh_token" in token_data:
             request.session["refresh_token"] = token_data["refresh_token"]
 
-        return {
-            "message": "Spotify authentication successful!"
-        }
+        return RedirectResponse(url=FRONTEND_URL)
 
     except Exception as e:
         raise HTTPException(
