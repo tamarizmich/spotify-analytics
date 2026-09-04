@@ -3652,3 +3652,1155 @@ button {
     display: none;
   }
 }
+
+/* =========================================================
+   YEARBOOK LOGIN / COVER
+   ========================================================= */
+
+.yearbook-login {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.7), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.04), transparent 30%),
+    #e9e3d8;
+
+  position: relative;
+}
+
+
+/* Subtle paper texture */
+.yearbook-login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.025) 0px,
+      rgba(0, 0, 0, 0.025) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+}
+
+
+/* =========================================================
+   DESK
+   ========================================================= */
+
+.login-desk {
+  position: relative;
+  width: min(900px, 100%);
+  min-height: 720px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   YEARBOOK COVER
+   ========================================================= */
+
+.yearbook-cover {
+  position: relative;
+
+  width: min(470px, 80vw);
+  min-height: 650px;
+
+  padding: 46px 48px 42px;
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f7f1e6 0%,
+      #eee5d7 100%
+    );
+
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  box-shadow:
+    0 35px 60px rgba(0, 0, 0, 0.18),
+    0 10px 20px rgba(0, 0, 0, 0.1);
+
+  transform:
+    rotate(-1.2deg);
+
+  transition:
+    transform 500ms cubic-bezier(.22,.61,.36,1),
+    box-shadow 500ms ease;
+
+  z-index: 5;
+
+  overflow: hidden;
+}
+
+
+/* Cover paper grain */
+.yearbook-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.12;
+
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.035) 0px,
+      rgba(0, 0, 0, 0.035) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+
+/* Little inner border */
+.yearbook-cover::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  pointer-events: none;
+}
+
+
+/* Opening animation */
+.yearbook-cover.opening {
+  transform:
+    perspective(1200px)
+    rotateY(-18deg)
+    rotate(-1deg)
+    translateX(-10px);
+
+  box-shadow:
+    35px 35px 70px rgba(0, 0, 0, 0.2),
+    10px 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =========================================================
+   COVER CONTENT
+   ========================================================= */
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+/* Eyebrow */
+
+.cover-eyebrow {
+  margin: 0 0 18px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+
+  color: #68625a;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.cover-title {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 0.88;
+
+  color: #22211f;
+}
+
+
+.cover-title span {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  letter-spacing: 0.24em;
+
+  margin-bottom: 7px;
+}
+
+
+.cover-title strong {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(43px, 7vw, 58px);
+
+  font-weight: 900;
+
+  letter-spacing: -0.045em;
+}
+
+
+.cover-title strong:last-child {
+  font-size: clamp(38px, 6vw, 52px);
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.cover-divider {
+  width: 70%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 22px 0 16px;
+
+  color: #3b3935;
+}
+
+
+.cover-divider i {
+  display: block;
+
+  width: 70px;
+  height: 1px;
+
+  background: rgba(0, 0, 0, 0.3);
+}
+
+
+.cover-divider span {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.cover-subtitle {
+  margin: 0 0 20px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 15px;
+  line-height: 1.35;
+
+  font-style: italic;
+
+  color: #565149;
+}
+
+
+/* =========================================================
+   PHOTO
+   ========================================================= */
+
+.cover-photo {
+  width: 210px;
+  height: 155px;
+
+  padding: 9px;
+
+  box-sizing: border-box;
+
+  background: #faf8f2;
+
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.13);
+
+  transform: rotate(2deg);
+
+  margin: 4px 0 20px;
+}
+
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ded8cb,
+      #c9c1b2
+    );
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  color: #3d3933;
+}
+
+
+.photo-placeholder span {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+
+.photo-placeholder p {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 19px;
+  line-height: 0.9;
+
+  font-weight: 900;
+
+  letter-spacing: 0.04em;
+}
+
+
+.photo-placeholder small {
+  margin-top: 10px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 7px;
+  letter-spacing: 0.18em;
+}
+
+
+/* =========================================================
+   COVER META
+   ========================================================= */
+
+.cover-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  color: #666057;
+}
+
+
+/* =========================================================
+   OPEN BUTTON
+   ========================================================= */
+
+.open-yearbook-button {
+  position: relative;
+  z-index: 3;
+
+  width: 230px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 13px 16px;
+
+  border: 1px solid #25231f;
+
+  background: #25231f;
+  color: #f7f1e6;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  cursor: pointer;
+
+  box-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+
+.open-yearbook-button:hover {
+  transform: translate(-2px, -2px);
+
+  box-shadow:
+    7px 7px 0 rgba(0, 0, 0, 0.15);
+}
+
+
+.open-yearbook-button:active {
+  transform: translate(2px, 2px);
+
+  box-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+
+.open-yearbook-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+
+.open-yearbook-button strong {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+
+/* Spotify hint */
+
+.spotify-hint {
+  margin: 10px 0 0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  color: #777168;
+}
+
+
+/* Error */
+
+.login-error {
+  margin: 12px 0 0;
+
+  max-width: 280px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 9px;
+  line-height: 1.4;
+
+  color: #8b3939;
+}
+
+
+/* =========================================================
+   TAPE
+   ========================================================= */
+
+.cover-tape {
+  position: absolute;
+
+  width: 105px;
+  height: 25px;
+
+  background: rgba(210, 194, 159, 0.58);
+
+  z-index: 4;
+
+  opacity: 0.8;
+
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+
+.tape-one {
+  top: 18px;
+  left: -22px;
+
+  transform: rotate(-38deg);
+}
+
+
+.tape-two {
+  bottom: 42px;
+  right: -28px;
+
+  transform: rotate(42deg);
+}
+
+
+/* =========================================================
+   COVER CORNERS
+   ========================================================= */
+
+.cover-corner {
+  position: absolute;
+
+  z-index: 3;
+
+  font-size: 14px;
+
+  color: rgba(0, 0, 0, 0.35);
+}
+
+
+.cover-corner.top-left {
+  top: 28px;
+  left: 31px;
+}
+
+
+.cover-corner.bottom-right {
+  right: 31px;
+  bottom: 25px;
+}
+
+
+/* =========================================================
+   HANDWRITING
+   ========================================================= */
+
+.cover-handwriting {
+  position: absolute;
+
+  right: 22px;
+  bottom: 92px;
+
+  z-index: 3;
+
+  font-family:
+    "Comic Sans MS",
+    "Bradley Hand",
+    cursive;
+
+  font-size: 10px;
+  line-height: 1.2;
+
+  text-align: left;
+
+  color: #625d56;
+
+  transform: rotate(-7deg);
+}
+
+
+/* =========================================================
+   DESK DECORATIONS
+   ========================================================= */
+
+.login-decoration {
+  position: absolute;
+
+  z-index: 2;
+
+  color: #38352f;
+
+  pointer-events: none;
+}
+
+
+.login-pencil {
+  left: 5%;
+  bottom: 95px;
+
+  font-family:
+    "Comic Sans MS",
+    cursive;
+
+  font-size: 75px;
+
+  transform:
+    rotate(-32deg);
+}
+
+
+.login-star {
+  top: 60px;
+  left: 18%;
+
+  font-size: 30px;
+
+  transform: rotate(15deg);
+
+  opacity: 0.55;
+}
+
+
+.login-star-two {
+  right: 17%;
+  bottom: 90px;
+
+  font-size: 22px;
+
+  transform: rotate(-15deg);
+
+  opacity: 0.45;
+}
+
+
+.login-paperclip {
+  position: absolute;
+
+  right: 7%;
+  top: 95px;
+
+  z-index: 2;
+
+  font-family:
+    Georgia,
+    serif;
+
+  font-size: 80px;
+
+  transform:
+    rotate(18deg);
+
+  color: #77736b;
+
+  opacity: 0.65;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LITTLE DESK NOTE
+   ========================================================= */
+
+.login-note {
+  position: absolute;
+
+  right: 4%;
+  bottom: 50px;
+
+  width: 145px;
+
+  padding: 15px 17px;
+
+  box-sizing: border-box;
+
+  background: #f4edb9;
+
+  box-shadow:
+    3px 6px 12px rgba(0, 0, 0, 0.12);
+
+  transform: rotate(4deg);
+
+  z-index: 3;
+}
+
+
+.login-note::before {
+  content: "";
+
+  position: absolute;
+
+  top: -7px;
+  left: 42px;
+
+  width: 60px;
+  height: 14px;
+
+  background: rgba(210, 194, 159, 0.6);
+
+  transform: rotate(-3deg);
+}
+
+
+.login-note span {
+  font-family:
+    "Comic Sans MS",
+    cursive;
+
+  font-size: 15px;
+}
+
+
+.login-note p {
+  margin: 5px 0 0;
+
+  font-family:
+    "Comic Sans MS",
+    "Bradley Hand",
+    cursive;
+
+  font-size: 11px;
+  line-height: 1.3;
+
+  color: #49443b;
+}
+
+
+/* =========================================================
+   DESK TOOL PANEL
+   ========================================================= */
+
+.desk-tool-panel {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: min(320px, 75vw);
+
+  padding: 25px 28px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffdf6,
+      #f1ebdd
+    );
+
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  box-shadow:
+    8px 12px 25px rgba(0, 0, 0, 0.16);
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-1.5deg);
+
+  z-index: 30;
+
+  animation:
+    deskPanelIn 220ms ease-out;
+}
+
+
+.desk-tool-panel::before {
+  content: "";
+
+  position: absolute;
+
+  top: -9px;
+  left: 50%;
+
+  width: 75px;
+  height: 17px;
+
+  background:
+    rgba(210, 194, 159, 0.58);
+
+  transform:
+    translateX(-50%)
+    rotate(-2deg);
+}
+
+
+@keyframes deskPanelIn {
+  from {
+    opacity: 0;
+    transform:
+      translate(-50%, -46%)
+      rotate(2deg)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      rotate(-1.5deg)
+      scale(1);
+  }
+}
+
+
+.desk-tool-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  color: #746d63;
+}
+
+
+.desk-tool-panel h3 {
+  margin: 0 0 10px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 25px;
+  line-height: 1;
+
+  color: #292723;
+}
+
+
+.desk-tool-panel p {
+  margin: 8px 0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 10px;
+  line-height: 1.5;
+
+  color: #5e5951;
+}
+
+
+.desk-tool-close {
+  position: absolute;
+
+  top: 10px;
+  right: 12px;
+
+  width: 25px;
+  height: 25px;
+
+  border: 0;
+
+  background: transparent;
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  font-size: 21px;
+
+  line-height: 1;
+
+  color: #666057;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease;
+}
+
+
+.desk-tool-close:hover {
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   DESK SUPPLY INTERACTIONS
+   ========================================================= */
+
+.school-supply {
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+
+.school-supply:hover {
+  filter:
+    drop-shadow(
+      0 7px 7px rgba(0, 0, 0, 0.15)
+    );
+}
+
+
+.pencil-supply:hover {
+  transform:
+    rotate(63deg)
+    translateY(-5px);
+}
+
+
+.eraser-supply:hover {
+  transform:
+    rotate(-9deg)
+    translateY(-5px);
+}
+
+
+.ruler-supply:hover {
+  transform:
+    rotate(-72deg)
+    translateY(-5px);
+}
+
+
+.clip-supply:hover {
+  transform:
+    rotate(18deg)
+    translateY(-5px);
+}
+
+
+/* Active tool */
+
+.pencil-supply.active {
+  animation:
+    pencilClick 350ms ease;
+}
+
+
+.eraser-supply.active {
+  animation:
+    eraserClick 350ms ease;
+}
+
+
+.ruler-supply.active {
+  animation:
+    rulerClick 350ms ease;
+}
+
+
+.clip-supply.active {
+  animation:
+    clipClick 350ms ease;
+}
+
+
+@keyframes pencilClick {
+  0% {
+    transform: rotate(63deg);
+  }
+
+  50% {
+    transform:
+      rotate(58deg)
+      translateY(-9px);
+  }
+
+  100% {
+    transform: rotate(63deg);
+  }
+}
+
+
+@keyframes eraserClick {
+  0% {
+    transform: rotate(-9deg);
+  }
+
+  40% {
+    transform:
+      rotate(-15deg)
+      translateX(-7px);
+  }
+
+  70% {
+    transform:
+      rotate(-3deg)
+      translateX(7px);
+  }
+
+  100% {
+    transform: rotate(-9deg);
+  }
+}
+
+
+@keyframes rulerClick {
+  0% {
+    transform: rotate(-72deg);
+  }
+
+  50% {
+    transform:
+      rotate(-67deg)
+      translateY(-8px);
+  }
+
+  100% {
+    transform: rotate(-72deg);
+  }
+}
+
+
+@keyframes clipClick {
+  0% {
+    transform: rotate(18deg);
+  }
+
+  50% {
+    transform:
+      rotate(28deg)
+      translateY(-5px);
+  }
+
+  100% {
+    transform: rotate(18deg);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .login-desk {
+    min-height: 680px;
+  }
+
+  .login-pencil {
+    left: 1%;
+  }
+
+  .login-paperclip {
+    right: 1%;
+  }
+
+  .login-note {
+    right: 0;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .yearbook-login {
+    padding: 25px 15px;
+  }
+
+  .login-desk {
+    min-height: auto;
+  }
+
+  .yearbook-cover {
+    width: min(430px, 92vw);
+    min-height: 610px;
+
+    padding:
+      40px 30px
+      35px;
+  }
+
+  .cover-photo {
+    width: 190px;
+    height: 140px;
+  }
+
+  .login-pencil,
+  .login-paperclip,
+  .login-note {
+    display: none;
+  }
+
+  .login-star {
+    left: 5%;
+  }
+
+  .login-star-two {
+    right: 5%;
+  }
+
+  .cover-handwriting {
+    right: 17px;
+    bottom: 82px;
+  }
+}
+
+
+@media (max-width: 430px) {
+
+  .yearbook-cover {
+    min-height: 570px;
+
+    padding:
+      34px 22px
+      30px;
+  }
+
+  .cover-eyebrow {
+    font-size: 7px;
+  }
+
+  .cover-title span {
+    font-size: 13px;
+  }
+
+  .cover-title strong {
+    font-size: 40px;
+  }
+
+  .cover-title strong:last-child {
+    font-size: 35px;
+  }
+
+  .cover-subtitle {
+    font-size: 13px;
+  }
+
+  .cover-photo {
+    width: 170px;
+    height: 125px;
+  }
+
+  .cover-meta {
+    font-size: 7px;
+  }
+
+  .open-yearbook-button {
+    width: 210px;
+  }
+
+  .cover-handwriting {
+    font-size: 8px;
+  }
+}

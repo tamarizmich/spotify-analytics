@@ -15,21 +15,21 @@ interface NotebookPage {
 
 interface NotebookProps {
   pages: NotebookPage[];
-  onDeskNavigate?: (section: string) => void;
 }
 
-function Notebook({ pages, onDeskNavigate }: NotebookProps) {
+type DeskTool = "annotate" | "erase" | "stats" | "notes" | null;
+
+function Notebook({ pages }: NotebookProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [displayPage, setDisplayPage] = useState(0);
   const [isTurning, setIsTurning] = useState(false);
   const [direction, setDirection] = useState<"next" | "previous">("next");
 
+  const [activeDeskTool, setActiveDeskTool] =
+    useState<DeskTool>(null);
+
   const paperRef = useRef<HTMLDivElement>(null);
   const pageContentRef = useRef<HTMLDivElement>(null);
-
-  // =========================================================
-  // DYNAMIC PAPER HEIGHT
-  // =========================================================
 
   const updatePaperHeight = () => {
     if (!paperRef.current || !pageContentRef.current) return;
@@ -63,10 +63,6 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
     return () => observer.disconnect();
   }, [displayPage]);
 
-  // =========================================================
-  // PAGE NAVIGATION
-  // =========================================================
-
   const goToPage = (index: number) => {
     if (
       index === currentPage ||
@@ -99,10 +95,6 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
     }
   };
 
-  // =========================================================
-  // KEYBOARD NAVIGATION
-  // =========================================================
-
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
@@ -111,6 +103,10 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
 
       if (event.key === "ArrowLeft") {
         previousPage();
+      }
+
+      if (event.key === "Escape") {
+        setActiveDeskTool(null);
       }
     };
 
@@ -121,66 +117,67 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
     };
   }, [currentPage, isTurning]);
 
-  // =========================================================
-  // DESK NAVIGATION
-  // =========================================================
-
-  const handleDeskNavigation = (section: string) => {
-    if (onDeskNavigate) {
-      onDeskNavigate(section);
-    }
-  };
-
   const current = pages[currentPage];
   const visible = pages[displayPage];
+
+  const handleDeskTool = (tool: DeskTool) => {
+    setActiveDeskTool((currentTool) =>
+      currentTool === tool ? null : tool
+    );
+  };
 
   return (
     <div className="notebook-wrapper">
 
-      {/* =====================================================
-          SCHOOL DESK — NAVIGATION
-          ===================================================== */}
-
+      {/* DESK TOOLS */}
       <div
         className="school-supplies"
-        aria-label="School supplies navigation"
+        aria-label="Yearbook desk tools"
       >
-
-        {/* PENCIL — CHARTS */}
         <button
-          className="school-supply pencil-supply"
-          onClick={() => handleDeskNavigation("charts")}
-          aria-label="Charts"
+          className={`school-supply pencil-supply ${
+            activeDeskTool === "annotate"
+              ? "active"
+              : ""
+          }`}
+          onClick={() => handleDeskTool("annotate")}
+          aria-label="Annotate your yearbook"
         >
           <span className="pencil-body">
             <span className="pencil-tip" />
           </span>
 
           <span className="supply-note">
-            see the numbers →
+            annotate your yearbook
           </span>
         </button>
 
-        {/* ERASER — PERSONALITY */}
         <button
-          className="school-supply eraser-supply"
-          onClick={() => handleDeskNavigation("personality")}
-          aria-label="Your personality"
+          className={`school-supply eraser-supply ${
+            activeDeskTool === "erase"
+              ? "active"
+              : ""
+          }`}
+          onClick={() => handleDeskTool("erase")}
+          aria-label="Erase"
         >
           <span className="eraser-body">
             ERASE
           </span>
 
           <span className="supply-note">
-            what kind of listener are you?
+            erase questionable choices
           </span>
         </button>
 
-        {/* RULER — INSIGHTS */}
         <button
-          className="school-supply ruler-supply"
-          onClick={() => handleDeskNavigation("insights")}
-          aria-label="Insights"
+          className={`school-supply ruler-supply ${
+            activeDeskTool === "stats"
+              ? "active"
+              : ""
+          }`}
+          onClick={() => handleDeskTool("stats")}
+          aria-label="Quick stats"
         >
           <span className="ruler-body">
             <span>0</span>
@@ -192,15 +189,18 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
           </span>
 
           <span className="supply-note">
-            measure your taste →
+            quick stats
           </span>
         </button>
 
-        {/* PAPER CLIP — NOTES */}
         <button
-          className="school-supply clip-supply"
-          onClick={() => handleDeskNavigation("notes")}
-          aria-label="Notes"
+          className={`school-supply clip-supply ${
+            activeDeskTool === "notes"
+              ? "active"
+              : ""
+          }`}
+          onClick={() => handleDeskTool("notes")}
+          aria-label="Little notes"
         >
           <span className="paperclip">
             ⌇
@@ -210,23 +210,19 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
             little notes
           </span>
         </button>
-
       </div>
 
-      {/* =====================================================
-          NOTEBOOK
-          ===================================================== */}
-
+      {/* NOTEBOOK */}
       <div className="notebook">
-
-        {/* TABS */}
 
         <nav className="notebook-tabs">
           {pages.map((item, index) => (
             <button
               key={item.id}
               className={`notebook-tab ${
-                index === currentPage ? "active" : ""
+                index === currentPage
+                  ? "active"
+                  : ""
               }`}
               onClick={() => goToPage(index)}
             >
@@ -241,18 +237,11 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
           ))}
         </nav>
 
-        {/* PAPER */}
-
         <div
           className="notebook-paper"
           ref={paperRef}
         >
-
-          {/* BINDING */}
-
           <div className="paper-binding" />
-
-          {/* HOLES */}
 
           <div className="paper-holes">
             <span />
@@ -263,10 +252,6 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
             <span />
           </div>
 
-          {/* =================================================
-              PAGE UNDERNEATH
-              ================================================= */}
-
           {isTurning && (
             <div className="notebook-page page-under">
               <div className="page-content">
@@ -275,25 +260,20 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
             </div>
           )}
 
-          {/* =================================================
-              CURRENT PAGE
-              ================================================= */}
-
           <div
             className={`notebook-page page-front ${
-              isTurning ? `turning-${direction}` : ""
+              isTurning
+                ? `turning-${direction}`
+                : ""
             }`}
           >
             <div
-              className={`page-content page-${displayPage + 1}`}
+              className={`page-content page-${
+                displayPage + 1
+              }`}
               ref={pageContentRef}
             >
-
               {visible.content}
-
-              {/* =================================================
-                  PAGE 01 — YEARBOOK STICKER
-                  ================================================= */}
 
               {displayPage === 0 && (
                 <div className="page-sticker yearbook-star">
@@ -302,17 +282,14 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
                 </div>
               )}
 
-              {/* =================================================
-                  PAGE 02 — SCHOOL STORE RECEIPT
-                  ================================================= */}
-
               {displayPage === 1 && (
                 <div className="page-sticker receipt-sticker">
-
                   <div className="masking-tape" />
 
                   <div className="receipt-paper">
-                    <small>YEARBOOK CAFÉ</small>
+                    <small>
+                      YEARBOOK CAFÉ
+                    </small>
 
                     <strong>
                       THANK YOU!
@@ -336,34 +313,21 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
                       TOTAL: 2026
                     </b>
                   </div>
-
                 </div>
               )}
-
-              {/* =================================================
-                  PAGE 03 — GUIDANCE OFFICE
-                  ================================================= */}
 
               {displayPage === 2 && (
                 <div className="page-stamp guidance-stamp">
                   GUIDANCE
-
                   <span>
                     OFFICE
                   </span>
                 </div>
               )}
 
-              {/* =================================================
-                  PAGE 04 — AWARD
-                  ================================================= */}
-
               {displayPage === 3 && (
                 <div className="page-sticker award-sticker">
-
-                  <span>
-                    ★
-                  </span>
+                  <span>★</span>
 
                   <strong>
                     CLASS
@@ -374,28 +338,114 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
                   <small>
                     2026
                   </small>
-
                 </div>
               )}
 
-              {/* =================================================
-                  PAGE 05 — CONTACT SHEET
-                  ================================================= */}
-
               {displayPage === 4 && null}
-
             </div>
           </div>
-
         </div>
       </div>
 
-      {/* =====================================================
-          PAGE NAVIGATION
-          ===================================================== */}
+      {/* DESK TOOL PANEL */}
+      {activeDeskTool && (
+        <div className="desk-tool-panel">
+          {activeDeskTool === "annotate" && (
+            <>
+              <span className="desk-tool-label">
+                ✏️ YEARBOOK NOTE
+              </span>
 
+              <h3>
+                Leave your mark.
+              </h3>
+
+              <p>
+                Your pencil is ready. We'll use this
+                space for your personal yearbook notes.
+              </p>
+            </>
+          )}
+
+          {activeDeskTool === "erase" && (
+            <>
+              <span className="desk-tool-label">
+                🧽 ERASER
+              </span>
+
+              <h3>
+                Nothing to erase... yet.
+              </h3>
+
+              <p>
+                Some questionable music choices are
+                permanent.
+              </p>
+            </>
+          )}
+
+          {activeDeskTool === "stats" && (
+            <>
+              <span className="desk-tool-label">
+                📏 QUICK STATS
+              </span>
+
+              <h3>
+                Your yearbook at a glance.
+              </h3>
+
+              <p>
+                20 artists in your current class.
+              </p>
+
+              <p>
+                45% overlap with your medium-term
+                listening.
+              </p>
+
+              <p>
+                25% overlap with your long-term
+                listening.
+              </p>
+            </>
+          )}
+
+          {activeDeskTool === "notes" && (
+            <>
+              <span className="desk-tool-label">
+                📎 LITTLE NOTES
+              </span>
+
+              <h3>
+                Things worth remembering.
+              </h3>
+
+              <p>
+                TXT stayed at #1.
+              </p>
+
+              <p>
+                LE SSERAFIM moved up 1 place.
+              </p>
+
+              <p>
+                EXO dropped 4 places.
+              </p>
+            </>
+          )}
+
+          <button
+            className="desk-tool-close"
+            onClick={() => setActiveDeskTool(null)}
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
+      {/* PAGE NAVIGATION */}
       <div className="notebook-navigation">
-
         <button
           className="page-nav-button"
           onClick={previousPage}
@@ -429,9 +479,7 @@ function Notebook({ pages, onDeskNavigate }: NotebookProps) {
         >
           NEXT →
         </button>
-
       </div>
-
     </div>
   );
 }

@@ -8,9 +8,10 @@ import ClassRoster from "./ClassRoster";
 
 interface DashboardProps {
   analysis: any;
+  onDeskNavigate?: (section: string) => void;
 }
 
-function Dashboard({ analysis }: DashboardProps) {
+function Dashboard({ analysis, onDeskNavigate }: DashboardProps) {
   const topArtist = analysis?.top_artist;
 
   const pages = [
@@ -20,7 +21,6 @@ function Dashboard({ analysis }: DashboardProps) {
       tab: "TOP OF CLASS",
       content: (
         <section className="yearbook-page page-cover">
-
           <header className="yearbook-header">
             <p className="eyebrow">
               K-POP MUSIC INTELLIGENCE
@@ -40,7 +40,6 @@ function Dashboard({ analysis }: DashboardProps) {
           </header>
 
           <section className="hero-section">
-
             <div className="hero-copy">
               <p className="section-label">
                 01 — TOP OF THE CLASS
@@ -61,7 +60,6 @@ function Dashboard({ analysis }: DashboardProps) {
 
             {topArtist && (
               <div className="top-artist-card">
-
                 <div className="photo-frame">
                   {topArtist.image && (
                     <img
@@ -72,7 +70,6 @@ function Dashboard({ analysis }: DashboardProps) {
                 </div>
 
                 <div className="artist-info">
-
                   <span className="rank">
                     #01
                   </span>
@@ -86,18 +83,14 @@ function Dashboard({ analysis }: DashboardProps) {
                       {topArtist.name}
                     </h3>
                   </div>
-
                 </div>
 
                 <p className="handwritten">
                   most likely to be played
                 </p>
-
               </div>
             )}
-
           </section>
-
         </section>
       ),
     },
@@ -108,7 +101,6 @@ function Dashboard({ analysis }: DashboardProps) {
       tab: "SCHOOL STORE",
       content: (
         <section className="yearbook-page">
-
           <div className="section-heading">
             <p className="section-label">
               02 — THE SCHOOL STORE
@@ -135,7 +127,6 @@ function Dashboard({ analysis }: DashboardProps) {
               analysis?.long_term_roster ?? []
             }
           />
-
         </section>
       ),
     },
@@ -146,7 +137,6 @@ function Dashboard({ analysis }: DashboardProps) {
       tab: "GUIDANCE OFFICE",
       content: (
         <section className="yearbook-page">
-
           <TasteEvolutionReport
             shortTerm={
               analysis?.short_term_roster ?? []
@@ -170,7 +160,6 @@ function Dashboard({ analysis }: DashboardProps) {
               }
             }
           />
-
         </section>
       ),
     },
@@ -181,7 +170,6 @@ function Dashboard({ analysis }: DashboardProps) {
       tab: "HONOR ROLL",
       content: (
         <section className="yearbook-page">
-
           <div className="section-heading">
             <p className="section-label">
               04 — THE HONOR ROLL
@@ -202,7 +190,6 @@ function Dashboard({ analysis }: DashboardProps) {
               analysis?.rank_movement ?? []
             }
           />
-
         </section>
       ),
     },
@@ -213,7 +200,6 @@ function Dashboard({ analysis }: DashboardProps) {
       tab: "CLASS ROSTER",
       content: (
         <section className="yearbook-page">
-
           <div className="section-heading">
             <p className="section-label">
               05 — THE CLASS ROSTER
@@ -234,7 +220,6 @@ function Dashboard({ analysis }: DashboardProps) {
               analysis?.medium_term_roster ?? []
             }
           />
-
         </section>
       ),
     },
@@ -242,7 +227,10 @@ function Dashboard({ analysis }: DashboardProps) {
 
   return (
     <main className="yearbook-app">
-      <Notebook pages={pages} />
+      <Notebook
+        pages={pages}
+        onDeskNavigate={onDeskNavigate}
+      />
     </main>
   );
 }
