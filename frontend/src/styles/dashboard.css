@@ -18,7 +18,6 @@ body {
   margin: 0;
   min-width: 320px;
   position: relative;
-
   background:
     radial-gradient(
       circle at 20% 20%,
@@ -42,9 +41,9 @@ body {
     #e9e2d4;
 }
 
-/* =========================
+/* =========================================================
    NOTEBOOK DETAILS
-   ========================= */
+   ========================================================= */
 
 body::before {
   content: '';
@@ -52,7 +51,6 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 10;
-
   background:
     repeating-linear-gradient(
       0deg,
@@ -61,7 +59,6 @@ body::before {
       transparent 1px,
       transparent 4px
     );
-
   opacity: 0.5;
 }
 
@@ -72,7 +69,6 @@ body::after {
   top: 0;
   width: 10px;
   height: 100%;
-
   background-image:
     radial-gradient(
       circle,
@@ -80,11 +76,9 @@ body::after {
       rgba(32, 29, 27, 0.2) 3px,
       transparent 3.5px
     );
-
   background-size: 10px 42px;
   background-position: center 18px;
   background-repeat: repeat-y;
-
   opacity: 0.45;
   pointer-events: none;
   z-index: 11;
@@ -94,9 +88,9 @@ button {
   font-family: inherit;
 }
 
-/* =========================
+/* =========================================================
    YEARBOOK
-   ========================= */
+   ========================================================= */
 
 .yearbook {
   position: relative;
@@ -142,9 +136,9 @@ button {
   font-size: 10px;
 }
 
-/* =========================
+/* =========================================================
    GENERAL SECTION DETAILS
-   ========================= */
+   ========================================================= */
 
 .hero-section,
 .profile-section,
@@ -161,11 +155,9 @@ button {
   position: absolute;
   top: 35px;
   right: 25px;
-
   font-family: 'Caveat', cursive;
   font-size: 19px;
   color: #706a62;
-
   transform: rotate(-7deg);
   opacity: 0.65;
 }
@@ -175,18 +167,16 @@ button {
   position: absolute;
   right: 25px;
   bottom: 35px;
-
   font-family: 'Caveat', cursive;
   font-size: 18px;
   color: #706a62;
-
   transform: rotate(3deg);
   opacity: 0.6;
 }
 
-/* =========================
+/* =========================================================
    HERO
-   ========================= */
+   ========================================================= */
 
 .hero-section {
   display: grid;
@@ -221,9 +211,9 @@ button {
   color: #5c554f;
 }
 
-/* =========================
+/* =========================================================
    TOP ARTIST
-   ========================= */
+   ========================================================= */
 
 .top-artist-card {
   position: relative;
@@ -277,16 +267,14 @@ button {
   right: 20px;
   bottom: 18px;
   margin: 0;
-
   font-family: 'Caveat', cursive;
   font-size: 21px;
-
   transform: rotate(-5deg);
 }
 
-/* =========================
+/* =========================================================
    SECTIONS
-   ========================= */
+   ========================================================= */
 
 .profile-section,
 .overlap-section {
@@ -307,9 +295,9 @@ button {
   line-height: 1.6;
 }
 
-/* =========================
+/* =========================================================
    STATS
-   ========================= */
+   ========================================================= */
 
 .stats-grid,
 .overlap-grid {
@@ -324,7 +312,6 @@ button {
   background: rgba(244, 239, 229, 0.55);
   padding: 28px;
   min-height: 180px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -342,9 +329,9 @@ button {
   color: #665e57;
 }
 
-/* =========================
+/* =========================================================
    OVERLAP
-   ========================= */
+   ========================================================= */
 
 .overlap-grid {
   grid-template-columns: repeat(2, 1fr);
@@ -365,18 +352,18 @@ button {
   margin: 0;
 }
 
-/* =========================
+/* =========================================================
    HONOR ROLL
-   ========================= */
+   ========================================================= */
 
 .honor-roll-section {
   padding: 70px 20px;
   border-top: 1px solid rgba(32, 29, 27, 0.2);
 }
 
-/* =========================
+/* =========================================================
    CLASS SUPERLATIVES
-   ========================= */
+   ========================================================= */
 
 .superlatives {
   display: grid;
@@ -389,10 +376,8 @@ button {
   position: relative;
   min-height: 320px;
   padding: 22px;
-
   background: #f4efe5;
   border: 1px solid rgba(32, 29, 27, 0.3);
-
   box-shadow: 7px 9px 0 rgba(32, 29, 27, 0.1);
 }
 
@@ -412,15 +397,14 @@ button {
   transform: rotate(-0.8deg);
 }
 
-/* =========================
+/* =========================================================
    CARD HEADER
-   ========================= */
+   ========================================================= */
 
 .superlative-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   border-bottom: 1px solid rgba(32, 29, 27, 0.25);
   padding-bottom: 14px;
 }
@@ -436,28 +420,28 @@ button {
   letter-spacing: 0.14em;
 }
 
-/* =========================
+/* =========================================================
    ARTIST PHOTO CARDS
-   ========================= */
+   ========================================================= */
 
 .superlative-content {
   display: grid;
   grid-template-columns: 125px 1fr;
   gap: 22px;
   align-items: center;
-  height: 235px;
+
+  /* CAMBIO: ya no fijamos una altura rígida */
+  min-height: 235px;
+  height: auto;
 }
 
 .artist-photo {
   width: 125px;
   height: 150px;
-
   overflow: hidden;
   background: #d5cdc0;
-
   border: 8px solid #e9e2d4;
   outline: 1px solid rgba(32, 29, 27, 0.25);
-
   box-shadow: 4px 5px 0 rgba(32, 29, 27, 0.12);
 }
 
@@ -474,14 +458,13 @@ button {
   height: 100%;
   display: grid;
   place-items: center;
-
   font-size: 28px;
   opacity: 0.45;
 }
 
-/* =========================
+/* =========================================================
    ARTIST INFORMATION
-   ========================= */
+   ========================================================= */
 
 .superlative-info h3 {
   font-family: 'Playfair Display', serif;
@@ -494,9 +477,7 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-
   margin: 0;
-
   font-family: 'DM Mono', monospace;
   font-size: 13px;
 }
@@ -507,16 +488,14 @@ button {
 
 .superlative-note {
   margin-top: 18px;
-
   font-family: 'Caveat', cursive;
   font-size: 20px;
-
   transform: rotate(-4deg);
 }
 
-/* =========================
+/* =========================================================
    MOST IMPROVED
-   ========================= */
+   ========================================================= */
 
 .improved {
   background: #eef0e6;
@@ -526,9 +505,9 @@ button {
   color: #536b52;
 }
 
-/* =========================
+/* =========================================================
    BIGGEST DROP
-   ========================= */
+   ========================================================= */
 
 .dropped {
   background: #f1e7df;
@@ -538,9 +517,9 @@ button {
   color: #9a5148;
 }
 
-/* =========================
+/* =========================================================
    CLASS FAVORITE
-   ========================= */
+   ========================================================= */
 
 .favorite {
   grid-column: span 2;
@@ -571,9 +550,9 @@ button {
   margin-top: 20px;
 }
 
-/* =========================
+/* =========================================================
    STAYING POWER
-   ========================= */
+   ========================================================= */
 
 .stable-card {
   min-height: 260px;
@@ -601,31 +580,25 @@ button {
   color: #706a62;
 }
 
-/* =========================
+/* =========================================================
    MINI HONOR ROLL
-   ========================= */
+   ========================================================= */
 
 .mini-honor-roll {
   grid-column: span 2;
   position: relative;
-
   padding: 34px 28px 28px;
-
   background: #f4efe5;
   border: 1px solid rgba(32, 29, 27, 0.3);
-
   box-shadow: 6px 7px 0 rgba(32, 29, 27, 0.08);
-
   transform: rotate(0.4deg);
 }
 
 .mini-honor-roll::before {
   content: '✦';
-
   position: absolute;
   top: 18px;
   right: 22px;
-
   font-size: 18px;
   opacity: 0.35;
 }
@@ -634,9 +607,7 @@ button {
   display: flex;
   align-items: center;
   gap: 14px;
-
   margin: 0 0 6px;
-
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.14em;
@@ -646,53 +617,39 @@ button {
   content: '';
   height: 1px;
   flex: 1;
-
   background: rgba(32, 29, 27, 0.25);
 }
 
 .mini-honor-roll::after {
   content: 'the ones quietly climbing the charts';
-
   display: block;
   margin-bottom: 28px;
-
   font-family: 'Caveat', cursive;
   font-size: 20px;
   color: #706a62;
-
   transform: rotate(-2deg);
 }
 
 .mini-names {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
   gap: 0;
-
   border-top: 1px solid rgba(32, 29, 27, 0.25);
-
   counter-reset: rising;
 }
 
 .mini-names span {
   position: relative;
-
   display: grid;
   grid-template-columns: 34px 1fr auto;
-
   align-items: center;
   gap: 14px;
-
   min-height: 70px;
   padding: 12px 10px;
-
   border-bottom: 1px solid rgba(32, 29, 27, 0.18);
-
   background: transparent;
-
   font-family: 'Playfair Display', serif;
   font-size: 20px;
-
   transition:
     background 0.2s ease,
     padding 0.2s ease;
@@ -710,7 +667,6 @@ button {
 .mini-names span::before {
   content: counter(rising);
   counter-increment: rising;
-
   font-family: 'DM Mono', monospace;
   font-size: 9px;
   color: #8b847c;
@@ -719,20 +675,17 @@ button {
 .mini-names b {
   margin: 0;
   padding: 5px 8px;
-
   border: 1px solid rgba(83, 107, 82, 0.35);
-
   font-family: 'DM Mono', monospace;
   font-size: 9px;
   font-weight: 500;
-
   color: #536b52;
   background: rgba(83, 107, 82, 0.06);
 }
 
-/* =========================
+/* =========================================================
    CLASS ROSTER
-   ========================= */
+   ========================================================= */
 
 .roster-section {
   padding: 70px 20px;
@@ -741,15 +694,12 @@ button {
 
 .roster-section::before {
   content: '★ class photo day ★';
-
   position: absolute;
   right: 25px;
   top: 38px;
-
   font-family: 'Caveat', cursive;
   font-size: 19px;
   color: #706a62;
-
   transform: rotate(-4deg);
   opacity: 0.65;
 }
@@ -766,26 +716,21 @@ button {
 
 .roster-section .section-heading h2::after {
   content: '';
-
   position: absolute;
   left: 0;
   right: -8px;
   bottom: -5px;
   height: 7px;
-
   background: rgba(180, 155, 92, 0.28);
-
   transform: rotate(-1deg);
   z-index: -1;
 }
 
 .roster-section .section-heading::after {
   content: '✦';
-
   position: absolute;
   right: 10px;
   bottom: 5px;
-
   font-size: 22px;
   opacity: 0.3;
 }
@@ -794,25 +739,19 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 28px 20px;
-
   margin-top: 50px;
 }
 
-/* =========================
+/* =========================================================
    ROSTER CARD
-   ========================= */
+   ========================================================= */
 
 .roster-card {
   position: relative;
-
   background: #f4efe5;
-
   padding: 12px 12px 18px;
-
   border: 1px solid rgba(32, 29, 27, 0.22);
-
   box-shadow: 5px 7px 0 rgba(32, 29, 27, 0.09);
-
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -840,29 +779,23 @@ button {
   z-index: 2;
 }
 
-/* =========================
+/* =========================================================
    ROSTER PHOTO
-   ========================= */
+   ========================================================= */
 
 .roster-photo {
   position: relative;
-
   aspect-ratio: 4 / 5;
-
   overflow: hidden;
-
   background: #d5cdc0;
 }
 
 .roster-photo img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   display: block;
-
   filter: saturate(0.78) contrast(0.95);
-
   transition: transform 0.35s ease;
 }
 
@@ -873,46 +806,37 @@ button {
 .roster-placeholder {
   width: 100%;
   height: 100%;
-
   display: grid;
   place-items: center;
-
   font-family: 'Playfair Display', serif;
   font-size: 32px;
-
   opacity: 0.35;
 }
 
-/* =========================
+/* =========================================================
    ROSTER RANK
-   ========================= */
+   ========================================================= */
 
 .roster-rank {
   position: absolute;
-
   top: 10px;
   left: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-width: 38px;
   height: 28px;
   padding: 0 8px;
-
   background: #f4efe5;
-
   border: 1px solid rgba(32, 29, 27, 0.3);
-
   font-family: 'DM Mono', monospace;
   font-size: 9px;
   letter-spacing: 0.08em;
 }
 
-/* =========================
+/* =========================================================
    ROSTER INFORMATION
-   ========================= */
+   ========================================================= */
 
 .roster-info {
   position: relative;
@@ -921,67 +845,49 @@ button {
 
 .roster-number {
   position: absolute;
-
   right: 4px;
   top: 16px;
-
   font-family: 'DM Mono', monospace;
   font-size: 9px;
-
   color: #8b847c;
 }
 
 .roster-info h3 {
   max-width: 85%;
-
   margin: 0;
-
   font-family: 'Playfair Display', serif;
   font-size: clamp(20px, 2vw, 27px);
   line-height: 0.98;
   font-weight: 600;
-
   letter-spacing: -0.025em;
 }
 
 .roster-caption {
   display: block;
-
   margin-top: 11px;
-
   font-family: 'DM Mono', monospace;
   font-size: 8px;
   letter-spacing: 0.13em;
-
   color: #756e67;
 }
 
-/* =========================
+/* =========================================================
    ROSTER HOVER NOTE
-   ========================= */
+   ========================================================= */
 
 .roster-card::after {
   content: 'CLASS OF 2026';
-
   position: absolute;
-
   right: -8px;
   bottom: -10px;
-
   padding: 4px 7px;
-
   background: #e5e0d4;
-
   border: 1px solid rgba(32, 29, 27, 0.2);
-
   font-family: 'DM Mono', monospace;
   font-size: 7px;
   letter-spacing: 0.1em;
-
   opacity: 0;
-
   transform: rotate(-4deg);
-
   transition: opacity 0.2s ease;
 }
 
@@ -989,22 +895,18 @@ button {
   opacity: 1;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-   ========================= */
+   ========================================================= */
 
 .yearbook-footer {
   position: relative;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   border-top: 1px solid rgba(32, 29, 27, 0.35);
-
   padding: 20px;
   margin-top: 30px;
-
   font-family: 'DM Mono', monospace;
   font-size: 9px;
   letter-spacing: 0.1em;
@@ -1012,28 +914,21 @@ button {
 
 .yearbook-footer::before {
   content: '— end of page —';
-
   position: absolute;
-
   left: 50%;
   top: -13px;
-
   transform: translateX(-50%);
-
   padding: 3px 10px;
-
   background: #e9e2d4;
-
   font-family: 'Caveat', cursive;
   font-size: 15px;
   letter-spacing: 0;
-
   color: #706a62;
 }
 
-/* =========================
+/* =========================================================
    TABLET
-   ========================= */
+   ========================================================= */
 
 @media (max-width: 1000px) {
   .class-roster {
@@ -1062,9 +957,9 @@ button {
   }
 }
 
-/* =========================
+/* =========================================================
    MOBILE
-   ========================= */
+   ========================================================= */
 
 @media (max-width: 700px) {
   .superlatives {
@@ -1079,6 +974,7 @@ button {
   .superlative-content {
     grid-template-columns: 105px 1fr;
     gap: 16px;
+    min-height: 215px;
   }
 
   .artist-photo {
@@ -1120,9 +1016,9 @@ button {
   }
 }
 
-/* =========================
+/* =========================================================
    PHONE
-   ========================= */
+   ========================================================= */
 
 @media (max-width: 500px) {
   .yearbook-header h1 {
@@ -1146,7 +1042,7 @@ button {
   }
 
   .superlative-content {
-    height: 215px;
+    min-height: 215px;
   }
 
   .artist-photo {
@@ -1170,10 +1066,8 @@ button {
   .roster-rank {
     top: 7px;
     left: 7px;
-
     min-width: 32px;
     height: 24px;
-
     font-size: 8px;
   }
 
@@ -1196,9 +1090,9 @@ button {
   }
 }
 
-/* =========================================
+/* =========================================================
    SCHOOL STORE — LISTENING RECEIPT
-   ========================================= */
+   ========================================================= */
 
 .school-store {
   width: min(100%, 1100px);
@@ -1479,7 +1373,6 @@ button {
   white-space: nowrap;
 }
 
-
 /* Responsive */
 
 @media (max-width: 900px) {
@@ -1512,9 +1405,9 @@ button {
   }
 }
 
-/* =========================================
+/* =========================================================
    GUIDANCE OFFICE — TASTE EVOLUTION
-   ========================================= */
+   ========================================================= */
 
 .taste-report {
   width: min(100%, 1100px);
@@ -1931,7 +1824,6 @@ button {
   letter-spacing: 0.08em;
 }
 
-
 /* Responsive */
 
 @media (max-width: 800px) {
@@ -1993,5 +1885,1185 @@ button {
   .counselor-signature {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   NOTEBOOK
+   ========================================================= */
+
+.yearbook-app {
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 30px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.notebook-wrapper {
+  width: min(1250px, 100%);
+}
+
+.notebook {
+  position: relative;
+  display: flex;
+  width: 100%;
+  perspective: 1800px;
+}
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+.notebook-tabs {
+  width: 145px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 45px;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.notebook-tab {
+  border: none;
+  cursor: pointer;
+  min-height: 70px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  text-align: left;
+  background: #d9d2bd;
+  color: #292722;
+  font-family: "DM Mono", monospace;
+  transform: translateX(0);
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+  position: relative;
+  border-right: 0;
+  border-radius: 0 2px 2px 0;
+  box-shadow:
+    2px 2px 0 rgba(40, 34, 25, 0.06),
+    0 5px 8px rgba(40, 34, 25, 0.06);
+}
+
+.notebook-tab:nth-child(1) {
+  margin-top: 0;
+}
+
+.notebook-tab:nth-child(2) {
+  margin-top: 3px;
+}
+
+.notebook-tab:nth-child(3) {
+  margin-top: 6px;
+}
+
+.notebook-tab:nth-child(4) {
+  margin-top: 9px;
+}
+
+.notebook-tab:nth-child(5) {
+  margin-top: 12px;
+}
+
+.notebook-tab::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(50, 45, 35, 0.08);
+}
+
+.notebook-tab:hover {
+  transform: translateX(-9px);
+  box-shadow:
+    3px 3px 0 rgba(40, 34, 25, 0.07),
+    0 7px 12px rgba(40, 34, 25, 0.08);
+}
+
+.notebook-tab.active {
+  background: #f5f0df;
+  transform: translateX(-17px);
+  box-shadow:
+    3px 3px 0 rgba(40, 34, 25, 0.08),
+    0 8px 14px rgba(40, 34, 25, 0.1);
+}
+
+.notebook-tab.active::after {
+  background: rgba(40, 40, 30, 0.16);
+}
+
+.tab-number {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+}
+
+.tab-label {
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   PAPER
+   ========================================================= */
+
+.notebook-paper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+
+  /*
+    IMPORTANTE:
+    El contenedor permite que las páginas tengan
+    contenido mayor a 760px sin cortarlo.
+  */
+  overflow: visible;
+
+  display: grid;
+  align-items: start;
+  perspective: 1800px;
+}
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.notebook-page {
+  /*
+    Las páginas siguen siendo absolutas para permitir
+    la animación de cambio de página.
+  */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  /*
+    Ya NO usamos height: 760px.
+    760px solamente es el mínimo.
+  */
+  min-height: 760px;
+  height: auto;
+
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+
+  /*
+    ESTE era uno de los problemas principales.
+    No cortar el contenido.
+  */
+  overflow: visible;
+}
+
+.notebook-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(70, 60, 40, 0.035) 0 1px,
+      transparent 1px
+    );
+  background-size: 9px 9px;
+  opacity: 0.5;
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 760px;
+  height: auto;
+}
+
+/* =========================================================
+   PAPER HOLES
+   ========================================================= */
+
+.paper-holes {
+  position: absolute;
+  left: 18px;
+  top: 35px;
+  bottom: 35px;
+  width: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.paper-holes span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #d8d0bd;
+  box-shadow:
+    inset 1px 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================================================
+   PAGE LAYERS
+   ========================================================= */
+
+.page-front {
+  z-index: 3;
+}
+
+.page-under {
+  z-index: 2;
+  transform: translateX(4px);
+  box-shadow:
+    -8px 0 20px rgba(40, 34, 25, 0.1);
+}
+
+/* =========================================================
+   PAGE TURN
+   ========================================================= */
+
+.notebook-page.turning-next {
+  animation:
+    realisticTurnNext 500ms cubic-bezier(
+      0.22,
+      0.61,
+      0.36,
+      1
+    ) forwards;
+}
+
+.notebook-page.turning-previous {
+  animation:
+    realisticTurnPrevious 500ms cubic-bezier(
+      0.22,
+      0.61,
+      0.36,
+      1
+    ) forwards;
+}
+
+@keyframes realisticTurnNext {
+  0% {
+    transform:
+      rotateY(0deg)
+      translateZ(0);
+    box-shadow:
+      0 16px 35px rgba(40, 34, 25, 0.14);
+  }
+
+  35% {
+    transform:
+      rotateY(-55deg)
+      translateZ(12px);
+    box-shadow:
+      18px 18px 30px rgba(40, 34, 25, 0.2);
+  }
+
+  65% {
+    transform:
+      rotateY(-105deg)
+      translateZ(18px);
+    box-shadow:
+      25px 15px 35px rgba(40, 34, 25, 0.12);
+  }
+
+  100% {
+    transform:
+      rotateY(-180deg)
+      translateZ(0);
+    box-shadow:
+      0 0 0 rgba(40, 34, 25, 0);
+  }
+}
+
+@keyframes realisticTurnPrevious {
+  0% {
+    transform:
+      rotateY(0deg)
+      translateZ(0);
+    box-shadow:
+      0 16px 35px rgba(40, 34, 25, 0.14);
+  }
+
+  35% {
+    transform:
+      rotateY(55deg)
+      translateZ(12px);
+    box-shadow:
+      -18px 18px 30px rgba(40, 34, 25, 0.2);
+  }
+
+  65% {
+    transform:
+      rotateY(105deg)
+      translateZ(18px);
+    box-shadow:
+      -25px 15px 35px rgba(40, 34, 25, 0.12);
+  }
+
+  100% {
+    transform:
+      rotateY(180deg)
+      translateZ(0);
+    box-shadow:
+      0 0 0 rgba(40, 34, 25, 0);
+  }
+}
+
+/* =========================================================
+   NOTEBOOK PAPER DETAILS
+   ========================================================= */
+
+.notebook-paper::before {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: rgba(50, 45, 35, 0.12);
+  pointer-events: none;
+}
+
+.notebook-paper::after {
+  content: "";
+  position: absolute;
+  z-index: 30;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 35px rgba(55, 45, 30, 0.035);
+}
+
+/* =========================================================
+   PAPER BINDING
+   ========================================================= */
+
+.paper-binding {
+  position: absolute;
+  z-index: 15;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 42px;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to right,
+      rgba(65, 55, 40, 0.13),
+      rgba(65, 55, 40, 0.04) 35%,
+      transparent 100%
+    );
+  box-shadow:
+    inset -8px 0 14px rgba(60, 50, 35, 0.045);
+}
+
+/* =========================================================
+   NOTEBOOK NAVIGATION
+   ========================================================= */
+
+.notebook-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 22px;
+  padding-left: 145px;
+}
+
+.page-nav-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #292722;
+  padding: 8px 4px;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.page-nav-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.page-nav-button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.page-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.page-indicator i {
+  opacity: 0.35;
+  font-style: normal;
+}
+
+/* =========================================================
+   PAGE ADJUSTMENTS
+   ========================================================= */
+
+.yearbook-page {
+  min-height: 760px;
+
+  /*
+    El padding sigue siendo parte del tamaño natural
+    de la página gracias a box-sizing: border-box.
+  */
+  padding: 65px 75px 70px 80px;
+
+  /*
+    No fijar height.
+    El contenido puede crecer.
+  */
+  height: auto;
+}
+
+.page-cover {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .yearbook-app {
+    padding: 20px 15px 35px;
+  }
+
+  .notebook {
+    display: block;
+  }
+
+  .notebook-tabs {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0 0 10px;
+    gap: 5px;
+  }
+
+  .notebook-tab {
+    min-width: 125px;
+    min-height: 58px;
+  }
+
+  .notebook-tab:hover {
+    transform: none;
+  }
+
+  .notebook-tab.active {
+    transform: translateY(-4px);
+  }
+
+  .yearbook-page {
+    min-height: 700px;
+    padding: 45px 45px 55px 60px;
+  }
+
+  .page-content {
+    min-height: 700px;
+  }
+
+  .notebook-navigation {
+    padding-left: 0;
+  }
+
+  .paper-holes {
+    left: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .yearbook-app {
+    padding: 10px;
+  }
+
+  .notebook-tabs {
+    scrollbar-width: none;
+  }
+
+  .notebook-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .notebook-tab {
+    min-width: 105px;
+    min-height: 52px;
+    padding: 8px 10px;
+  }
+
+  .tab-label {
+    font-size: 8px;
+  }
+
+  .yearbook-page {
+    min-height: 650px;
+    padding: 35px 25px 45px 40px;
+  }
+
+  .page-content {
+    min-height: 650px;
+  }
+
+  .paper-holes {
+    left: 8px;
+  }
+
+  .paper-holes span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .notebook-navigation {
+    margin-top: 15px;
+  }
+
+  .page-nav-button {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   FIX — NOTEBOOK NAVIGATION
+   ========================================================= */
+
+.notebook-navigation {
+  width: calc(100% - 145px);
+  margin-top: 22px;
+  margin-left: 145px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 5px;
+}
+
+.page-nav-button {
+  position: relative;
+  z-index: 50;
+
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #292722;
+
+  padding: 8px 4px;
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.page-nav-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.page-nav-button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.page-indicator {
+  position: relative;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   FIX — PAPER HOLES
+   ========================================================= */
+
+.notebook-paper {
+  position: relative;
+  overflow: visible;
+}
+
+/*
+   Los hoyitos deben estar por encima de la página,
+   pero debajo de los elementos que realmente deban
+   aparecer encima.
+*/
+.paper-holes {
+  position: absolute;
+
+  left: 18px;
+  top: 35px;
+  bottom: 35px;
+
+  width: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+.paper-holes span {
+  display: block;
+
+  width: 11px;
+  height: 11px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #cfc7b5;
+
+  border: 1px solid rgba(45, 40, 32, 0.28);
+
+  box-shadow:
+    inset 1px 1px 2px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.25);
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   FIX — BINDING
+   ========================================================= */
+
+.paper-binding {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 42px;
+
+  z-index: 90;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(65, 55, 40, 0.13),
+      rgba(65, 55, 40, 0.04) 35%,
+      transparent 100%
+    );
+
+  box-shadow:
+    inset -8px 0 14px rgba(60, 50, 35, 0.045);
+}
+
+
+/* =========================================================
+   FIX — PAGE
+   ========================================================= */
+
+.notebook-page {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  min-height: 760px;
+  height: auto;
+
+  overflow: visible;
+
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+
+  will-change: transform;
+}
+
+
+/* Los hoyitos siempre quedan visibles */
+.notebook-page .paper-holes {
+  z-index: 100;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .notebook-navigation {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .paper-holes {
+    left: 12px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .notebook-navigation {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .paper-holes {
+    left: 8px;
+  }
+
+  .paper-holes span {
+    width: 8px;
+    height: 8px;
+  }
+
+  .page-nav-button {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   PHYSICAL PAGE DETAILS
+   ========================================================= */
+
+/* ---------- GENERAL ---------- */
+
+.page-content {
+  position: relative;
+}
+
+.page-sticker,
+.page-stamp,
+.contact-sheet {
+  position: absolute;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* =========================================================
+   01 — YEARBOOK STAR STICKER
+   ========================================================= */
+
+.yearbook-star {
+  right: 55px;
+  top: 45px;
+
+  width: 78px;
+  height: 78px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #d9c9a9;
+  border: 1px solid rgba(55, 47, 35, 0.25);
+
+  transform: rotate(8deg);
+
+  box-shadow:
+    2px 3px 5px rgba(45, 38, 28, 0.15),
+    inset 0 0 0 3px rgba(255, 255, 255, 0.18);
+}
+
+.yearbook-star::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+
+  border: 1px dashed rgba(55, 47, 35, 0.35);
+  border-radius: 50%;
+}
+
+.yearbook-star {
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+}
+
+.yearbook-star span {
+  margin-top: -2px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+}
+
+/* =========================================================
+   02 — RECEIPT + MASKING TAPE
+   ========================================================= */
+
+.receipt-sticker {
+  right: 45px;
+  bottom: 55px;
+
+  width: 190px;
+
+  transform: rotate(3deg);
+}
+
+.receipt-paper {
+  position: relative;
+
+  padding: 18px 16px 15px;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 17px,
+      rgba(70, 60, 45, 0.08) 18px
+    ),
+    #eee8d9;
+
+  border: 1px solid rgba(60, 50, 38, 0.16);
+
+  box-shadow:
+    2px 4px 8px rgba(40, 34, 25, 0.14);
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+}
+
+.receipt-paper small {
+  font-size: 7px;
+  letter-spacing: 0.08em;
+}
+
+.receipt-paper strong {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  margin: 4px 0;
+}
+
+.receipt-paper span {
+  font-size: 7px;
+  line-height: 1.5;
+}
+
+.receipt-paper hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px dashed rgba(60, 50, 38, 0.35);
+  margin: 5px 0;
+}
+
+.receipt-paper b {
+  font-size: 8px;
+}
+
+/* masking tape */
+
+.masking-tape {
+  position: absolute;
+
+  top: -13px;
+  left: 55px;
+
+  width: 82px;
+  height: 28px;
+
+  z-index: 3;
+
+  background: rgba(207, 187, 143, 0.78);
+
+  transform: rotate(-4deg);
+
+  box-shadow:
+    0 1px 2px rgba(40, 34, 25, 0.08);
+}
+
+.masking-tape::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.25;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 5px,
+      rgba(80, 68, 50, 0.12) 6px
+    );
+}
+
+/* =========================================================
+   03 — GUIDANCE OFFICE STAMP
+   ========================================================= */
+
+.guidance-stamp {
+  right: 55px;
+  top: 50px;
+
+  width: 125px;
+  height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid rgba(125, 65, 60, 0.55);
+
+  color: rgba(125, 65, 60, 0.65);
+
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+
+  transform: rotate(-7deg);
+
+  opacity: 0.78;
+}
+
+.guidance-stamp::before {
+  content: "";
+
+  position: absolute;
+  inset: 5px;
+
+  border: 1px solid rgba(125, 65, 60, 0.45);
+}
+
+.guidance-stamp span {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+/* =========================================================
+   04 — AWARD STICKER
+   ========================================================= */
+
+.award-sticker {
+  right: 50px;
+  bottom: 55px;
+
+  width: 105px;
+  height: 105px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  border-radius: 50%;
+
+  background: #e4d5b6;
+  border: 2px solid rgba(65, 55, 40, 0.28);
+
+  transform: rotate(6deg);
+
+  box-shadow:
+    3px 4px 7px rgba(40, 34, 25, 0.14),
+    inset 0 0 0 5px rgba(255, 255, 255, 0.15);
+}
+
+.award-sticker::before {
+  content: "";
+
+  position: absolute;
+  inset: 8px;
+
+  border: 1px dashed rgba(65, 55, 40, 0.35);
+  border-radius: 50%;
+}
+
+.award-sticker > span {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.award-sticker strong {
+  font-family: "Playfair Display", serif;
+  font-size: 12px;
+  line-height: 1.05;
+}
+
+.award-sticker small {
+  margin-top: 5px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+}
+
+/* =========================================================
+   05 — CONTACT SHEET
+   ========================================================= */
+
+.contact-sheet {
+  right: 45px;
+  bottom: 50px;
+
+  width: 185px;
+
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+
+  background: #f8f3e8;
+
+  border: 1px solid rgba(50, 42, 30, 0.2);
+
+  box-shadow:
+    3px 4px 9px rgba(40, 34, 25, 0.15);
+
+  transform: rotate(-4deg);
+}
+
+.contact-photo {
+  aspect-ratio: 1;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(80, 68, 50, 0.16),
+      rgba(255, 255, 255, 0.35)
+    );
+
+  border: 1px solid rgba(50, 42, 30, 0.14);
+
+  position: relative;
+}
+
+/* fake photographic variations */
+
+.photo-1 {
+  transform: rotate(-1deg);
+}
+
+.photo-2 {
+  transform: rotate(2deg);
+}
+
+.photo-3 {
+  transform: rotate(1deg);
+}
+
+.photo-4 {
+  transform: rotate(-2deg);
+}
+
+.contact-sheet > span {
+  grid-column: 1 / -1;
+
+  margin-top: 3px;
+
+  font-family: "DM Mono", monospace;
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  text-align: center;
+
+  color: #777064;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .yearbook-star {
+    right: 25px;
+    top: 25px;
+
+    width: 58px;
+    height: 58px;
+
+    font-size: 20px;
+  }
+
+  .yearbook-star span {
+    font-size: 5px;
+  }
+
+  .receipt-sticker {
+    right: 20px;
+    bottom: 30px;
+    width: 150px;
+  }
+
+  .guidance-stamp {
+    right: 25px;
+    top: 30px;
+
+    width: 100px;
+    height: 58px;
+
+    font-size: 10px;
+  }
+
+  .guidance-stamp span {
+    font-size: 8px;
+  }
+
+  .award-sticker {
+    right: 25px;
+    bottom: 30px;
+
+    width: 80px;
+    height: 80px;
+  }
+
+  .award-sticker strong {
+    font-size: 9px;
+  }
+
+  .contact-sheet {
+    right: 20px;
+    bottom: 30px;
+    width: 145px;
   }
 }
